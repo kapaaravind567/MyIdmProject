@@ -1,0 +1,89 @@
+1)Write a shell script to print the characters of an input string into reverse order.
+input="$1"
+reverse=""
+ len=${#input}
+   for (( i=$len-1; i>=0; i-- ))
+do
+   reverse="$reverse${input:$i:1}"
+done
+echo "$reverse"
+
+2)Write a shell script to find out the location of an input character into an input string.
+
+echo "Enter A String"
+read Str
+echo "Enter character You wanted find in $Str"
+read C
+awk -v a="$Str" -v b="$C" 'BEGIN{print index(a,b)}'
+
+
+
+6)To find out the greatest and smallest element of an array.
+
+read -a integers
+
+biggest=${integers[0]}
+smallest=${integers[0]}
+
+for i in ${integers[@]}
+do
+     if [[ $i -gt $biggest ]]
+     then
+        biggest="$i"
+     fi
+
+     if [[ $i -lt $smallest ]]
+     then
+        smallest="$i"
+     fi
+done
+
+echo "The largest number is $biggest"
+echo "The smallest number is $smallest"
+
+
+7)Write a shell script that takes a command-line argument and reports whether it is a directory, a file, or
+
+something else.
+
+echo "Enter file"
+read file
+  if [ -f $file ]
+  then
+    echo "It is an ordinary file"
+  elif [ -d $file ]
+  then
+    echo "It is directory file"
+  else
+    echo "Not exits"
+fi
+
+
+
+8)Write a shell script to display a three digit number in English words.
+
+echo "Enter number : "
+read n
+
+len=$(echo $n | wc -c)
+len=$(( $len - 1 ))
+
+echo "Your number $n in words : "
+for (( i=1; i<=$len; i++ ))
+do
+    digit=$(echo $n | cut -c $i)
+    case $digit in
+        0) echo -n "zero " ;;
+        1) echo -n "one " ;;
+        2) echo -n "two " ;;
+        3) echo -n "three " ;;
+        4) echo -n "four " ;;
+        5) echo -n "five " ;;
+        6) echo -n "six " ;;
+        7) echo -n "seven " ;;
+        8) echo -n "eight " ;;
+        9) echo -n "nine " ;;
+    esac
+done
+echo ""
+

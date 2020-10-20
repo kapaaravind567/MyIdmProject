@@ -1,0 +1,114 @@
+Today Assignments:
+
+1)Moving one script to another directory
+
+echo "present working directory"
+
+pwd
+
+read TargetDir
+
+ls
+
+if [ -d $TargetDir ]
+
+then
+       
+	 mv *sh $TargetDir
+
+else
+        
+	mkdir $TargetDir
+        
+	mv *sh $TargetDir
+
+fi
+********************************************************
+
+2)to find input string location
+
+echo "Enter A String"
+read Str
+echo "Enter character You wanted find in $Str"
+read C
+awk -v a="$Str" -v b="$C" 'BEGIN{print index(a,b)}'
+
+
+
+************************************************************
+3)Count lines,word spaces
+
+echo "Enter a file name"
+
+read FN
+
+if [ -z $FN ]
+
+then
+        
+	echo "File is Empty"
+
+else
+        
+	echo "Number of words in File: $(cat $FN | wc -w)"
+        
+	echo "Number of Lines in File: $(cat $FN | wc -l)"
+        
+	echo "Number of White spaces in File: $(cat $FN | grep -o " "| wc -l)"
+        
+	echo "Number of Charcaters in File : $(cat $FN | wc -c)"
+
+fi
+ 
+
+*************************************************************************
+4)uppercase
+
+
+
+#!/bin/sh
+
+echo "Enter filename"
+
+read FN
+
+echo "content of $FN before converting into UpeerCase"
+
+cat $FN
+
+echo "Content of $FN After Converting into UpperCase"
+
+tr '[ a-z ]' '[ A-Z ]' < $FN
+
+
+****************************************************************************
+5)curent directory,date etc
+
+echo "Present WorkingDirectory is : " $(pwd)
+
+echo "Clear the screen : " $(clear)
+
+echo "Current Date is " $(date)
+
+echo "Creating a directory"
+mkdir Fd
+
+cd Fd
+
+touch file1 file2
+
+ls
+
+
+
+***************************************************************************
+6)phone number
+
+grep -P '^(\d{3}-\d{3}-\d{4}|\d{3}\d{3}\d{4})$' phonenum.txt
+
+****************************************************************************
+7)remove special characters
+  
+sed 's/[!@#\$%^&*(){}!;.><|]//g' wc
+.txt
+*******************************************************************************
